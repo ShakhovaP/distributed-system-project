@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.views import generic
 
 # Create your views here.
 from .models import Song, Singer
@@ -48,3 +49,9 @@ class SongDetailView(generic.DetailView):
         song_id=Song.objects.get(pk=pk)
         song_id.lyrics = song_id.lyrics.replace('[', '<span class = "chord">').replace(']', '</span>')
         return song_id.lyrics
+
+class SingerListView(generic.ListView):
+    model = Singer
+
+class SingerDetailView(generic.DetailView):
+    model = Singer

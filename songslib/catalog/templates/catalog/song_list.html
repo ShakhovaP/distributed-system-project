@@ -8,7 +8,7 @@
 
     {% for song in song_list %}
     <li>
-        <a href="{{ song.get_absolute_url }}">{{ song.name}}</a> (<a href="">{{song.singer}}</a>)
+        <a href="{{ song.get_absolute_url }}">{{ song.name}}</a> (<a href="{% url 'singer-detail' song.singer.pk %}">{{song.singer}}</a>)
     </li>
     {% endfor %}
 

@@ -1,0 +1,19 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+    <h1>Singer List</h1>
+
+    {% if singer_list %}
+    <ul>
+
+      {% for singer in singer_list %}
+      <li>
+        <a href="{{ singer.get_absolute_url }}">{{ singer.name }} </a>
+      </li>
+      {% endfor %}
+
+    </ul>
+    {% else %}
+      <p>There are no singers.</p>
+    {% endif %} 
+{% endblock %}

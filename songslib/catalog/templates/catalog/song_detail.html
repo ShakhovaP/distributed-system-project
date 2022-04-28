@@ -3,7 +3,7 @@
 {% block content %}
 <h1>Song: "{{ song.name }}" </h1>
 
-<p><strong>Singer:</strong> <a href="">{{ song.singer }}</a></p> <!-- author detail link not yet defined -->
+<p><strong>Singer:</strong> <a href="{% url 'singer-detail' song.singer.pk %}">{{ song.singer }}</a></p>
 <p><strong>Genre:</strong> {% for genre in song.genre.all %} {{ genre }}{% if not forloop.last %}, {% endif %}{% endfor %}</p>
 
 <div style="margin-left:20px;margin-top:20px">
