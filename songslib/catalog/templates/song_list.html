@@ -1,0 +1,19 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+<h1>Song List</h1>
+
+    {% if song_list %}
+<ul>
+
+    {% for song in song_list %}
+    <li>
+        <a href="{{ song.get_absolute_url }}">{{ song.name}}</a> (<a href="">{{song.singer}}</a>)
+    </li>
+    {% endfor %}
+
+</ul>
+    {% else %}
+<p>There are no songs in the library.</p>
+    {% endif %}
+{% endblock %}

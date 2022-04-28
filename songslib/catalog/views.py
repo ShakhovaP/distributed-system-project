@@ -22,3 +22,29 @@ def index(request):
         'index.html',
         context={'num_songs':num_songs,'num_singers':num_singers, 'num_visits':num_visits},
     )
+
+class SongListView(generic.ListView):
+    model = Song
+    paginate_by = 20
+
+class SongDetailView(generic.DetailView):
+    model = Song
+
+    def song_detail_view(request,pk):
+        try:
+            song_id=Song.objects.get(pk=pk)
+        except Song.DoesNotExist:
+            raise Http404("Book does not exist")
+
+        #book_id=get_object_or_404(Book, pk=pk)
+
+        return render(
+            request,
+            'catalog/song_detail.html',
+            context={'song':song_id,}
+        )
+
+    def chords_view(pk):
+        song_id=Song.objects.get(pk=pk)
+        song_id.lyrics = song_id.lyrics.replace('[', '<span class = "chord">').replace(']', '</span>')
+        return song_id.lyrics

@@ -1,0 +1,19 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+<h1>Song: "{{ song.name }}" </h1>
+
+<p><strong>Singer:</strong> <a href="">{{ song.singer }}</a></p> <!-- author detail link not yet defined -->
+<p><strong>Genre:</strong> {% for genre in song.genre.all %} {{ genre }}{% if not forloop.last %}, {% endif %}{% endfor %}</p>
+
+<div style="margin-left:20px;margin-top:20px">
+    <h4>Lyrics</h4>
+    <pre>{{ song.lyrics}}</pre>
+</div>
+
+<div style="margin-left:20px;margin-top:20px">
+    <h4>Chords</h4>
+    <pre>{{ song.chords }}</pre>
+</div>
+
+{% endblock %}
